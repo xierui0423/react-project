@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 const path = require('path'),
-    webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+  webpack = require('webpack'),
+  HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -18,7 +18,7 @@ module.exports = {
     // only- means to only hot reload for successful updates
     'webpack/hot/only-dev-server',
 
-    './src/index.js'],
+    './src/index.jsx'],
 
   output: {
     path: `${__dirname}/dist`,
@@ -36,7 +36,7 @@ module.exports = {
     contentBase: `${__dirname}/dist`,
 
     // match the output 'publicPath'
-    publicPath: '/'
+    publicPath: '/',
 
   },
 
@@ -50,6 +50,10 @@ module.exports = {
     }],
   },
 
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+
   plugins: [
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
@@ -61,6 +65,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: './index.html', // Main html output path
       template: './src/template/index.html', // Html template path
-    })
+    }),
   ],
 };

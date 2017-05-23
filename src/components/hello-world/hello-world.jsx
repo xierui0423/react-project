@@ -2,6 +2,7 @@ import React from 'react';
 
 class HelloWorld extends React.Component {
   componentWillMount() {
+    // TODO Auto-drop console use on production build
     console.log('component will mount!');
   }
 
@@ -13,7 +14,7 @@ class HelloWorld extends React.Component {
     console.log('component will unmount!');
   }
 
-  render () {
+  render() {
     return (<div>Hello World!!! (from the full lifecycle component)</div>);
   }
 }

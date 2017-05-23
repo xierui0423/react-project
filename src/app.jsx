@@ -1,12 +1,13 @@
 import React from 'react';
 
-import HelloWorld from './components/hello-world/hello-world.jsx';
-import HelloWorldFunc from './components/hello-world/hello-world-func.jsx';
+import HelloWorld from './components/hello-world/hello-world';
+import HelloWorldFunc from './components/hello-world/hello-world-func';
+
 
 const App = () =>
     (<div>
-      <HelloWorld/>
-      <HelloWorldFunc/>
-    </div>)
+      <HelloWorld />
+      <HelloWorldFunc />
+    </div>);
 
 export default App;
