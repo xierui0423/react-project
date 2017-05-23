@@ -1,5 +1,16 @@
 {
   "presets": [
-    "env"
+    // webpack understands the native import syntax, and uses it for tree shaking
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    // Enables React code to work with HMR.
+    "react-hot-loader/babel"
   ]
 }
