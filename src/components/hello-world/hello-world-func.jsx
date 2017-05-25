@@ -1,6 +1,8 @@
 import React from 'react';
+import style from './hello-world-func.scss';
 
 const HelloWorldFunc = () => (
-  <div>Hello World!!! (from the representational function component)</div>);
+  <div className={style['hello-world']}>Hello World!!! (from the representational function
+      component)</div>);
 
 export default HelloWorldFunc;

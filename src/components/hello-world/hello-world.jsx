@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './hello-world.scss';
 
 class HelloWorld extends React.Component {
   componentWillMount() {
@@ -15,7 +16,7 @@ class HelloWorld extends React.Component {
   }
 
   render() {
-    return (<div>Hello World!!! (from the full lifecycle component)</div>);
+    return (<div className={style['hello-world']}>Hello World!!! (from the full lifecycle component)</div>);
   }
 }
 

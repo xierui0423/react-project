@@ -1,7 +1,9 @@
 // eslint-disable-next-line
 const path = require('path'),
   webpack = require('webpack'),
-  HtmlWebpackPlugin = require('html-webpack-plugin');
+  HtmlWebpackPlugin = require('html-webpack-plugin'),
+  ExtractTextPlugin = require('extract-text-webpack-plugin'),
+  cssNextPlugin = require('postcss-cssnext');
 
 module.exports = {
   entry: [
@@ -41,13 +43,24 @@ module.exports = {
   },
 
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
 
-      // With the env preset, babel will automatically determine needed presets http://babeljs.io/docs/plugins/preset-env/
-      loaders: ['babel-loader'],
-    }],
+        // With the env preset, babel will automatically determine needed presets http://babeljs.io/docs/plugins/preset-env/
+        loaders: ['babel-loader'],
+      },
+      {
+        test: /\.s?css$/,
+        exclude: /node_modules/,
+
+        // Note the order of loader applied is opposite with the order within the loaders array
+        loader: ExtractTextPlugin.extract([
+          { loader: 'css-loader', options: { sourceMap: true, modules: true, localIdentName: '[local]-[hash:base64:5]' } },
+          { loader: 'postcss-loader', options: { plugins: () => [cssNextPlugin] } },
+          'sass-loader']),
+      }],
   },
 
   resolve: {
@@ -55,6 +68,9 @@ module.exports = {
   },
 
   plugins: [
+    // Make css bundle
+    new ExtractTextPlugin('styles.css'),
+
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
 
