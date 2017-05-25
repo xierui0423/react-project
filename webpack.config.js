@@ -67,17 +67,26 @@ const config = {
     // prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin(),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      // (the commons chunk name)
+      name: 'commons',
+
+      // (the filename of the commons chunk)
+      filename: 'commons.js',
+
+      // (Modules must be shared between 3 entries)
+      minChunks: 2,
+    }),
   ],
 };
 
 fileStream.readdirSync('./src/entries').forEach((entry) => {
   config.entry[entry] = [
-    `./src/entries/${entry}/entry.jsx`,
-
-    'babel-polyfill',
-
     // activate HMR for React
     'react-hot-loader/patch',
+
+    // Babel polyfill for advanced ES features
+    'babel-polyfill',
 
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
@@ -86,12 +95,15 @@ fileStream.readdirSync('./src/entries').forEach((entry) => {
     // bundle the client for hot reloading
     // only- means to only hot reload for successful updates
     'webpack/hot/only-dev-server',
+
+    // The actual entry
+    `./src/entries/${entry}/entry.jsx`,
   ];
 
 
   config.plugins.push(new HtmlWebpackPlugin({
       // inject: false,
-    chunks: [entry],
+    chunks: ['commons', entry],
     filename: `./${entry}.html`, // Main html output path
     template: `./src/entries/${entry}/template.html`, // Html template path
   }));
