@@ -12,6 +12,7 @@ const config = {
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
+    chunkFilename: 'async-chunks/[name].js',
     filename: 'entries/[name].js',
   },
 
