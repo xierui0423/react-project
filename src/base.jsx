@@ -6,24 +6,16 @@ import jQuery from 'jquery';
 // eslint-disable-next-line
 import { AppContainer } from 'react-hot-loader';
 
-import App from './app';
-
 window.$ = jQuery.noConflict();
 
-const render = () => {
+const render = (Feed) => {
   ReactDOM.render(
     <AppContainer>
-      <App />
+      <Feed />
     </AppContainer>,
       document.getElementById('app'),
   );
 };
 
-render();
+export default render;
 
-// Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./app.jsx', () => {
-    render(App);
-  });
-}

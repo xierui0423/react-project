@@ -3,29 +3,16 @@ const path = require('path'),
   webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  cssNextPlugin = require('postcss-cssnext');
+  cssNextPlugin = require('postcss-cssnext'),
+  fileStream = require('fs');
 
-module.exports = {
-  entry: [
-    'babel-polyfill',
-
-    // activate HMR for React
-    'react-hot-loader/patch',
-
-    // bundle the client for webpack-dev-server
-    // and connect to the provided endpoint
-    'webpack-dev-server/client?http://localhost:8080',
-
-    // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
-    'webpack/hot/only-dev-server',
-
-    './src/index.jsx'],
+const config = {
+  entry: {},
 
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'entries/[name].js',
   },
 
   devtool: 'inline-source-map',
@@ -57,7 +44,10 @@ module.exports = {
 
         // Note the order of loader applied is opposite with the order within the loaders array
         loader: ExtractTextPlugin.extract([
-          { loader: 'css-loader', options: { sourceMap: true, modules: true, localIdentName: '[local]-[hash:base64:5]' } },
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true, modules: true, localIdentName: '[local]-[hash:base64:5]' },
+          },
           { loader: 'postcss-loader', options: { plugins: () => [cssNextPlugin] } },
           'sass-loader']),
       }],
@@ -77,10 +67,35 @@ module.exports = {
     // prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin(),
 
-    // Used to automatically generate the entry Html page using template
-    new HtmlWebpackPlugin({
-      filename: './index.html', // Main html output path
-      template: './src/template/index.html', // Html template path
-    }),
   ],
 };
+
+fileStream.readdirSync('./src/entries').forEach((entry) => {
+  config.entry[entry] = [
+    `./src/entries/${entry}/entry.jsx`,
+
+    'babel-polyfill',
+
+    // activate HMR for React
+    'react-hot-loader/patch',
+
+    // bundle the client for webpack-dev-server
+    // and connect to the provided endpoint
+    'webpack-dev-server/client?http://localhost:8080',
+
+    // bundle the client for hot reloading
+    // only- means to only hot reload for successful updates
+    'webpack/hot/only-dev-server',
+  ];
+
+
+  config.plugins.push(new HtmlWebpackPlugin({
+      // inject: false,
+    chunks: [entry],
+    filename: `./${entry}.html`, // Main html output path
+    template: `./src/entries/${entry}/template.html`, // Html template path
+  }));
+});
+
+
+module.exports = config;
