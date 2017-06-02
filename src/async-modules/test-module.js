@@ -5,3 +5,4 @@ const asyncModule = {
 };
 
 export default asyncModule;
+

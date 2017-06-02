@@ -81,7 +81,9 @@ const config = {
   ],
 };
 
-fileStream.readdirSync('./src/entries').forEach((entry) => {
+const entries = fileStream.readdirSync('./src/entries');
+
+entries.forEach((entry) => {
   config.entry[entry] = [
     // activate HMR for React
     'react-hot-loader/patch',
@@ -103,12 +105,18 @@ fileStream.readdirSync('./src/entries').forEach((entry) => {
 
 
   config.plugins.push(new HtmlWebpackPlugin({
-      // inject: false,
+    // inject: false,
     chunks: ['commons', entry],
     filename: `./${entry}.html`, // Main html output path
     template: `./src/entries/${entry}/template.html`, // Html template path
   }));
 });
 
+config.plugins.push(new HtmlWebpackPlugin({
+  inject: true,
+  filename: './index.html', // Main html output path
+  template: './src/index.ejs', // Html template path
+  entries,
+}));
 
 module.exports = config;
