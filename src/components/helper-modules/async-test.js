@@ -1,8 +1,8 @@
-const asyncModule = {
+const asyncTest = {
   loaded: () => {
     console.log('Async Module Loaded!');
   },
 };
 
-export default asyncModule;
+export default asyncTest;
 

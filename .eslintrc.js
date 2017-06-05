@@ -22,6 +22,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
 
     // allow prefix underscore to indicate private memeber/function
-    'no-underscore-dangle': 0
+    'no-underscore-dangle': 0,
+
+    'linebreak-style': 0,
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const callAsyncModule = () => {
   // Async module importing
-  import(/* webpackChunkName: "test-module" */ '../../async-modules/test-module.js').then((asyncModule) => {
+  import(/* webpackChunkName: "async-test" */ '../../components/helper-modules/async-test.js').then((asyncModule) => {
     asyncModule.default.loaded();
   }).catch((err) => {
     console.log('Failed to load the async module!', err);
@@ -21,14 +21,9 @@ class AnotherPage extends React.Component {
   }
 
   __asyncLoad() {
-    Promise.all([import(/* webpackChunkName: "test-component" */ '../../async-modules/test-component.jsx'),
-      import(/* webpackChunkName: "test-component-func" */ '../../async-modules/test-component-func.jsx')],
+    Promise.all([import(/* webpackChunkName: "hello-world-async-test" */ '../../components/hello-world-async-test/component.jsx'),
+      import(/* webpackChunkName: "hello-world-func-async-test" */ '../../components/hello-world-func-async-test/component.jsx')],
     ).then((modules) => {
-      if (module.hot) {
-        module.hot.accept('../../async-modules/test-component-func.jsx', () => {
-          this.__asyncLoad();
-        });
-      }
       this.asyncComponent = modules[0].default;
       this.asyncComponentFunc = modules[1].default;
       this.setState({ showAsync: true });

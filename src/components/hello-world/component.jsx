@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './hello-world.scss';
+import style from './style.scss';
 
 class HelloWorld extends React.Component {
   componentWillMount() {
