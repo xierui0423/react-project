@@ -1,11 +1,11 @@
 import render from '../../base';
-import Main from './component';
+import Page from './component';
 
-render(Main);
+render(Page);
 
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./component', () => {
-    render(Main);
+    render(Page);
   });
 }

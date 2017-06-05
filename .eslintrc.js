@@ -24,6 +24,10 @@ module.exports = {
     // allow prefix underscore to indicate private memeber/function
     'no-underscore-dangle': 0,
 
+    // allow both windows and linux type linebreaks
     'linebreak-style': 0,
+
+    // allow loose prop type check
+    'react/forbid-prop-types': 0,
   }
 }

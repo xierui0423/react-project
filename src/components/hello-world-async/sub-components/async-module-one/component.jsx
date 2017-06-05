@@ -7,7 +7,7 @@ class AsyncComponent extends React.Component {
   render() {
     return (
       <button onClick={this.props.callAsyncModule}>This is a full life cycle async
-        component.</button>);
+        component!!!</button>);
   }
 }
 
