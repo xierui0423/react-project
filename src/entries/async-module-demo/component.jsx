@@ -26,7 +26,7 @@ class AnotherPage extends React.Component {
     ).then((modules) => {
       if (module.hot) {
         module.hot.accept('../../async-modules/test-component-func.jsx', () => {
-          this.lazyLoad();
+          this.__asyncLoad();
         });
       }
       this.asyncComponent = modules[0].default;
