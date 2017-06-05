@@ -113,7 +113,7 @@ entries.forEach((entry) => {
 });
 
 config.plugins.push(new HtmlWebpackPlugin({
-  inject: true,
+  inject: false,
   filename: './index.html', // Main html output path
   template: './src/index.ejs', // Html template path
   entries,

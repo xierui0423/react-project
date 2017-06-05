@@ -17,9 +17,18 @@ class AnotherPage extends React.Component {
   }
 
   componentWillMount() {
+    this.__asyncLoad();
+  }
+
+  __asyncLoad() {
     Promise.all([import(/* webpackChunkName: "test-component" */ '../../async-modules/test-component.jsx'),
       import(/* webpackChunkName: "test-component-func" */ '../../async-modules/test-component-func.jsx')],
     ).then((modules) => {
+      if (module.hot) {
+        module.hot.accept('../../async-modules/test-component-func.jsx', () => {
+          this.lazyLoad();
+        });
+      }
       this.asyncComponent = modules[0].default;
       this.asyncComponentFunc = modules[1].default;
       this.setState({ showAsync: true });
@@ -35,6 +44,8 @@ class AnotherPage extends React.Component {
         Loading...
       </div>);
   }
+
+
 }
 export default AnotherPage;
 
