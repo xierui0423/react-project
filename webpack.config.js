@@ -44,13 +44,13 @@ const config = {
         exclude: /node_modules/,
 
         // Note the order of loader applied is opposite with the order within the loaders array
-        loader: ExtractTextPlugin.extract([
+        loader: ['css-hot-loader'].concat(ExtractTextPlugin.extract([
           {
             loader: 'css-loader',
             options: { sourceMap: true, modules: true, localIdentName: '[local]-[hash:base64:5]' },
           },
           { loader: 'postcss-loader', options: { plugins: () => [cssNextPlugin] } },
-          'sass-loader']),
+          'sass-loader'])),
       }],
   },
 
