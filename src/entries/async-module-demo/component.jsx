@@ -38,8 +38,9 @@ class AnotherPage extends React.Component {
   }
 
   render() {
-    return this.state.showAsync ? React.createElement('div', {},
-      [React.createElement(this.asyncComponent, { key: '1', callAsyncModule }), React.createElement(this.asyncComponentFunc, { key: '2' })]) :
+    const [Async, AsyncFunc] = [this.asyncComponent, this.asyncComponentFunc];
+    return this.state.showAsync ?
+      <div><Async callAsyncModule={callAsyncModule} /><AsyncFunc /></div> :
       (<div>
         Loading...
       </div>);
