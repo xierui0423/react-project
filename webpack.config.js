@@ -60,7 +60,7 @@ const config = {
 
   plugins: [
     // Make css bundle
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
 
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),

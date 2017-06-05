@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from './style.scss';
+
 // eslint-disable-next-line
 class AsyncComponent extends React.Component {
 
   render() {
     return (
-      <button onClick={this.props.callAsyncModule}>This is a full life cycle async
-        component!!!</button>);
+      <div className={style['hello-world']}>
+        <button onClick={this.props.callAsyncModule}>This is a full life cycle async
+        component!!!</button>
+      </div>);
   }
 }
 

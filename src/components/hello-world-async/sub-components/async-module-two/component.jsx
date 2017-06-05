@@ -1,5 +1,7 @@
 import React from 'react';
 
-const asyncComponentFunc = () => (<div>This is an functional async component!</div>);
+import style from './style.scss';
+
+const asyncComponentFunc = () => (<div className={style['hello-world']}>This is an functional async component!</div>);
 
 export default asyncComponentFunc;
