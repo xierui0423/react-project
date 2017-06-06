@@ -60,7 +60,7 @@ const config = {
 
   plugins: [
     // Make css bundle
-    new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
+    new ExtractTextPlugin({ filename: 'assets/style/[name].css', allChunks: true }),
 
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
@@ -107,14 +107,14 @@ entries.forEach((entry) => {
   config.plugins.push(new HtmlWebpackPlugin({
     // inject: false,
     chunks: ['commons', entry],
-    filename: `./${entry}.html`, // Main html output path
+    filename: `pages/${entry}.html`, // Main html output path
     template: `./src/entries/${entry}/template.html`, // Html template path
   }));
 });
 
 config.plugins.push(new HtmlWebpackPlugin({
   inject: false,
-  filename: './index.html', // Main html output path
+  filename: 'index.html', // Main html output path
   template: './src/index.ejs', // Html template path
   entries,
 }));
