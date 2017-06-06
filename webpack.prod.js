@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const cssNextPlugin = require('postcss-cssnext');
+const CssNextPlugin = require('postcss-cssnext');
 const fileStream = require('fs');
 
 const config = {
@@ -36,7 +36,7 @@ const config = {
             loader: 'css-loader',
             options: { sourceMap: true, modules: true, localIdentName: '[local]-[hash:base64:5]' },
           },
-          { loader: 'postcss-loader', options: { plugins: () => [cssNextPlugin] } },
+          { loader: 'postcss-loader', options: { plugins: () => [CssNextPlugin] } },
           'sass-loader']),
       }],
   },
