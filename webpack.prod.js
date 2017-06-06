@@ -73,12 +73,10 @@ const config = {
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       mangle: {
-        screw_ie8: true,
         keep_fnames: true,
       },
       compress: {
         drop_console: true,
-        screw_ie8: true,
       },
       comments: false,
     }),
