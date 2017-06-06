@@ -7,7 +7,7 @@ const path = require('path'),
   fileStream = require('fs');
 
 const config = {
-  entry: {},
+  entry: { vendor: ['jquery', 'react', 'react-dom', 'prop-types'] },
 
   output: {
     path: `${__dirname}/dist`,
@@ -70,10 +70,7 @@ const config = {
 
     new webpack.optimize.CommonsChunkPlugin({
       // (the commons chunk name)
-      name: 'commons',
-
-      // (the filename of the commons chunk)
-      filename: 'commons.js',
+      names: ['vendor'],
 
       // (Modules must be shared between 3 entries)
       minChunks: 2,
@@ -105,8 +102,7 @@ entries.forEach((entry) => {
 
 
   config.plugins.push(new HtmlWebpackPlugin({
-    // inject: false,
-    chunks: ['commons', entry],
+    chunks: ['vendor', 'commons', entry],
     filename: `pages/${entry}.html`, // Main html output path
     template: `./src/entries/${entry}/template.html`, // Html template path
   }));
