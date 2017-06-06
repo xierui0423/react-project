@@ -36,7 +36,7 @@ const config = {
         exclude: /node_modules/,
 
         // With the env preset, babel will automatically determine needed presets http://babeljs.io/docs/plugins/preset-env/
-        loaders: ['babel-loader'],
+        loaders: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.s?css$/,
