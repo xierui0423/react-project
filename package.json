@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint --ext .jsx,.js --fix src",
-    "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "dev-HMR-server": "webpack-dev-server --open --env=dev",
+    "build-dev": "webpack --env=dev --progress --profile --colors",
+    "build-prod": "webpack --env=prod"
   },
   "author": "MLP-CD",
   "license": "MIT",
@@ -18,6 +19,7 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
     "css-hot-loader": "^1.1.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",

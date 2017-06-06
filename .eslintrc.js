@@ -29,5 +29,8 @@ module.exports = {
 
     // allow loose prop type check
     'react/forbid-prop-types': 0,
+
+    // allow dev module import in config files
+    'import/no-extraneous-dependencies': 0
   }
 }
