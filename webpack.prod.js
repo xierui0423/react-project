@@ -77,6 +77,7 @@ const config = {
         keep_fnames: true,
       },
       compress: {
+        drop_console: true,
         screw_ie8: true,
       },
       comments: false,
