@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import jQuery from 'jquery';
 
+/* eslint-disable */
+import theBullyFont from './assets/fonts/the-bully.ttf';
+import fonts from './assets/fonts/fonts.scss';
+
 // TODO drop the hot loading process on production build
 // eslint-disable-next-line
 import { AppContainer } from 'react-hot-loader';

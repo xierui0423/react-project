@@ -53,6 +53,18 @@ const config = {
             outputPath: 'assets/images',
           },
         }],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        exclude: /^node_modules$/,
+        loader: [{
+          loader: 'url-loader',
+          options: {
+            limit: Infinity,
+            name: '/[name].[ext]',
+            outputPath: 'assets/fonts',
+          },
+        }],
       }],
   },
 
