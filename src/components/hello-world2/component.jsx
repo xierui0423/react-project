@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.scss';
 import logo from './assets/react-logo.png';
-
+import data from '../../data/test.json';
 
 class HelloWorld extends React.Component {
   componentWillMount() {
@@ -19,7 +19,7 @@ class HelloWorld extends React.Component {
 
   render() {
     return (
-      <div className={style['hello-world']}>Hello World!!!
+      <div className={style['hello-world']}>Hello World!!! {data.name}
         (from the full lifecycle component)<img src={logo} alt="logo" className={style['logo-img']} /></div>);
   }
 }
