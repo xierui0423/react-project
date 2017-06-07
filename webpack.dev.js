@@ -36,7 +36,10 @@ const config = {
         exclude: /node_modules/,
 
         // With the env preset, babel will automatically determine needed presets http://babeljs.io/docs/plugins/preset-env/
-        loaders: ['babel-loader', 'eslint-loader'],
+        loader: ['babel-loader', { loader: 'eslint-loader',
+          options: {
+            quiet: true,
+          } }],
       },
       {
         test: /\.s?css$/,
@@ -50,6 +53,19 @@ const config = {
           },
           { loader: 'postcss-loader', options: { plugins: () => [CssNextPlugin] } },
           'sass-loader'])),
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        exclude: /^node_modules$/,
+        loader: [{
+          loader: 'url-loader',
+          options: {
+            // Images smaller than 2kb will be embedded as base64 data url
+            limit: 2000,
+            name: '/[path]/[name].[ext]',
+            outputPath: 'assets/images',
+          },
+        }],
       }],
   },
 
