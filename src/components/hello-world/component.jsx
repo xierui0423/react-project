@@ -19,7 +19,9 @@ class HelloWorld extends React.Component {
   render() {
     return (
       <div className={style['hello-world']}>Hello World!!!
-        (from the full lifecycle component)<img src={logo} alt="logo" className={style['logo-img']} /></div>);
+        (from the full lifecycle component)
+        <img src={logo} alt="logo" className={style['logo-img']} />
+      </div>);
   }
 }
 

@@ -9,6 +9,11 @@
     ],
     "react"
   ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs", "babel-plugin-dynamic-import-node"]
+    }
+  },
   "plugins": [
     // Enables React code to work with HMR.
     "react-hot-loader/babel",
