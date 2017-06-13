@@ -1,4 +1,4 @@
 /dist
 /node_modules
 /.idea
-/test/__coverage__
+/__coverage__
