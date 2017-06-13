@@ -2,12 +2,20 @@ const webpack = require('webpack');
 const Merge = require('webpack-merge');
 
 const CommonConfig = require('./webpack.common.js');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+
 
 module.exports = function (env) {
   return Merge(CommonConfig(env), {
     devtool: 'cheap-module-source-map',
 
     plugins: [
+      new StyleLintPlugin({
+        quiet: true,
+        syntax: 'scss',
+        failOnError: true,
+      }),
+
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false,

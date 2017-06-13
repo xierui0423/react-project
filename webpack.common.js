@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CssNextPlugin = require('postcss-cssnext');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const fileStream = require('fs');
 
 module.exports = function (env) {
@@ -26,7 +25,8 @@ module.exports = function (env) {
           exclude: /node_modules/,
 
           // With the env preset, babel will automatically determine needed presets http://babeljs.io/docs/plugins/preset-env/
-          loader: ['babel-loader', {
+          loader: env === 'local' ? ['babel-loader'] :
+          ['babel-loader', {
             loader: 'eslint-loader',
             options: {
               quiet: env === 'prod',
@@ -38,7 +38,7 @@ module.exports = function (env) {
           exclude: /node_modules/,
 
           // Note the order of loader applied is opposite with the order within the loaders array
-          loader: (env === 'prod' ? [] : ['css-hot-loader']).concat(ExtractTextPlugin.extract([
+          loader: (env === 'local' ? ['css-hot-loader'] : []).concat(ExtractTextPlugin.extract([
             {
               loader: 'css-loader',
               options: {
@@ -94,19 +94,13 @@ module.exports = function (env) {
         // (Modules must be shared between 3 entries)
         minChunks: 2,
       }),
-
-      new StyleLintPlugin({
-        quiet: env === 'prod',
-        syntax: 'scss',
-        failOnError: true,
-      }),
     ],
   };
 
   const entries = fileStream.readdirSync('./src/entries');
 
   entries.forEach((entry) => {
-    const devOnlyEntries = [    // activate HMR for React
+    const localOnlyEntries = [    // activate HMR for React
       'react-hot-loader/patch',
 
       // bundle the client for webpack-dev-server
@@ -126,8 +120,8 @@ module.exports = function (env) {
       `./src/entries/${entry}/entry.jsx`,
     ];
 
-    if (env !== 'prod') {
-      config.entry[entry] = devOnlyEntries.concat(config.entry[entry]);
+    if (env === 'local') {
+      config.entry[entry] = localOnlyEntries.concat(config.entry[entry]);
     }
 
 

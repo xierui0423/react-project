@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint --ext .jsx,.js --fix src",
-    "dev-HMR-server": "webpack-dev-server --open --env=dev",
+    "dev-HMR-server": "webpack-dev-server --env=local --open",
     "build-dev": "webpack --env=dev --progress --profile --colors",
     "build-prod": "webpack --env=prod",
     "test": "jest --config jest.config.json -i",
