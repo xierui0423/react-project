@@ -1,11 +1,18 @@
 {
-  "testMatch":  ["**/test/**/*.js?(x)"],
+  "testMatch": [
+    "**/(src|test)/**/*.test.js?(x)"
+  ],
+  "collectCoverage" : true,
+  "collectCoverageFrom": [
+    "**/src/**/*.js?(x)"
+  ],
+  "coverageDirectory": "<rootDir>/test/__coverage__",
   "verbose": true,
   "moduleNameMapper": {
     "\\.(css|scss)$": "identity-obj-proxy"
   },
   "transform": {
     "^.+\\.jsx?$": "babel-jest",
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mock/assets-transform.js"
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/mock/assets-transform.js"
   }
 }

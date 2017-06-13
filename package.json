@@ -8,7 +8,8 @@
     "dev-HMR-server": "webpack-dev-server --open --env=dev",
     "build-dev": "webpack --env=dev --progress --profile --colors",
     "build-prod": "webpack --env=prod",
-    "test": "jest --config jest.config.json -i"
+    "test": "jest --config jest.config.json -i",
+    "test-update-snapshot": "jest --config jest.config.json --updateSnapshot -i"
   },
   "author": "MLP-CD",
   "license": "MIT",

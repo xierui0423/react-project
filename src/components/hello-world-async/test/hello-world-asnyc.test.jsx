@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import HelloWorldAsync from '../src/components/hello-world-async/component';
+import renderer from 'react-test-renderer';
+import HelloWorldAsync from '../component';
 
 test('HelloWorldAsync changes the button text to "Clicked!!!" after click', () => {
   // Render the async component
