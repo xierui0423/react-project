@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CssNextPlugin = require('postcss-cssnext');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const fileStream = require('fs');
-
 
 module.exports = function (env) {
   const config = {
@@ -93,6 +93,12 @@ module.exports = function (env) {
 
         // (Modules must be shared between 3 entries)
         minChunks: 2,
+      }),
+
+      new StyleLintPlugin({
+        quiet: env === 'prod',
+        syntax: 'scss',
+        failOnError: true,
       }),
     ],
   };

@@ -2,3 +2,4 @@
 /node_modules
 /.idea
 /__coverage__
+npm-debug.log

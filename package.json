@@ -9,7 +9,8 @@
     "build-dev": "webpack --env=dev --progress --profile --colors",
     "build-prod": "webpack --env=prod",
     "test": "jest --config jest.config.json -i",
-    "test-update-snapshot": "jest --config jest.config.json --updateSnapshot -i"
+    "test-update-snapshot": "jest --config jest.config.json --updateSnapshot -i",
+    "stylelint": "stylelint src/**/*.scss --fix --syntax scss"
   },
   "author": "MLP-CD",
   "license": "MIT",
@@ -45,6 +46,9 @@
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.0",
+    "stylelint": "^7.11.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-webpack-plugin": "^0.7.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.0",
     "webpack-dev-server": "^2.4.5",
