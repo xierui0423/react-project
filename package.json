@@ -4,13 +4,14 @@
   "description": "The FE project boilerplate based on React",
   "main": "index.js",
   "scripts": {
-    "eslint": "eslint --ext .jsx,.js --fix src",
     "dev-HMR-server": "webpack-dev-server --env=local --open",
-    "build-dev": "webpack --env=dev",
-    "build-prod": "webpack --env=prod",
+    "eslint": "eslint --ext .jsx,.js --fix src",
+    "stylelint": "stylelint src/**/*.scss --fix --syntax scss",
+    "stylefmt": "stylefmt -c .stylelintrc.js -r src/**/*.scss ",
     "test": "jest --config jest.config.json -i",
     "test-update-snapshot": "jest --config jest.config.json --updateSnapshot -i",
-    "stylelint": "stylelint src/**/*.scss --fix --syntax scss"
+    "build-dev": "webpack --env=dev",
+    "build-prod": "webpack --env=prod"
   },
   "author": "MLP-CD",
   "license": "MIT",
@@ -49,6 +50,7 @@
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.0",
+    "stylefmt": "^6.0.0",
     "stylelint": "^7.11.0",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-webpack-plugin": "^0.7.0",

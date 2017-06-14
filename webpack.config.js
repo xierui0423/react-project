@@ -3,7 +3,7 @@ module.exports = function (env) {
   // (leave it empty to compile all entries);
   const compileEntries = [
   //  'chunk-demo-1',
-    'static-html-demo',
+  //   'static-html-demo',
   ];
 
   //eslint-disable-next-line
