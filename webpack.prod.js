@@ -6,8 +6,8 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 process.env.NODE_ENV = 'production';
 
-module.exports = function (env) {
-  return Merge(CommonConfig(env), {
+module.exports = function (env, compileEntries) {
+  return Merge(CommonConfig(env, compileEntries), {
     devtool: 'cheap-module-source-map',
 
     plugins: [

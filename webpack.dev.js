@@ -3,8 +3,8 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const CommonConfig = require('./webpack.common.js');
 
-module.exports = function (env) {
-  return Merge(CommonConfig(env), {
+module.exports = function (env, compileEntries) {
+  return Merge(CommonConfig(env, compileEntries), {
 
     plugins: [
       new StyleLintPlugin({

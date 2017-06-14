@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CssNextPlugin = require('postcss-cssnext');
 const fileStream = require('fs');
 
-module.exports = function (env) {
+module.exports = function (env, compileEntries) {
   const config = {
     entry: { vendor: ['jquery', 'react', 'react-dom', 'prop-types'] },
 
@@ -107,7 +107,11 @@ module.exports = function (env) {
     ],
   };
 
-  const entries = fileStream.readdirSync('./src/entries');
+  // Get entries from the entries path,
+  // if the list of entries need to be compiled is given and the current entry is not included,
+  // just don't add it to the config entry collection
+  const entries = fileStream.readdirSync('./src/entries').filter(entry =>
+    env !== 'local' || !compileEntries || !compileEntries.length || compileEntries.includes(entry));
 
   entries.forEach((entry) => {
     const localOnlyEntries = [    // activate HMR for React
