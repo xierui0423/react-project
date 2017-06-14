@@ -64,6 +64,16 @@ module.exports = function (env) {
           }],
         },
         {
+          test: /\.pug/,
+          exclude: /^node_modules$/,
+          loader: [{
+            loader: 'pug-loader',
+            options: {
+              pretty: true,
+            },
+          }],
+        },
+        {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
           exclude: /^node_modules$/,
           loader: [{
@@ -128,14 +138,14 @@ module.exports = function (env) {
     config.plugins.push(new HtmlWebpackPlugin({
       chunks: ['vendor', 'commons', entry],
       filename: `pages/${entry}.html`, // Main html output path
-      template: `./src/entries/${entry}/template.html`, // Html template path
+      template: `./src/entries/${entry}/template.pug`, // Html template path
     }));
   });
 
   config.plugins.push(new HtmlWebpackPlugin({
     inject: false,
     filename: 'index.html', // Main html output path
-    template: './src/index.ejs', // Html template path
+    template: './src/index.pug', // Html template path
     entries,
   }));
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AsyncFactory, { importLazy } from '../helper-modules/async-component-factory';
+import AsyncFactory, { importLazy } from '../../modules/helper-modules/async-component-factory';
 
 const callAsyncModule = () => {
   // Async module importing
-  import(/* webpackChunkName: "async-test" */ '../../components/helper-modules/async-test.js').then((asyncModule) => {
+  import(/* webpackChunkName: "async-test" */ '../../modules/helper-modules/async-test.js').then((asyncModule) => {
     asyncModule.default.loaded();
   }).catch((err) => {
     console.log('Failed to load the async module!', err);

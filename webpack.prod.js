@@ -4,6 +4,7 @@ const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
+process.env.NODE_ENV = 'production';
 
 module.exports = function (env) {
   return Merge(CommonConfig(env), {

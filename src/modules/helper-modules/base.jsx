@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import jQuery from 'jquery';
 
 /* eslint-disable */
-import theBullyFont from './assets/fonts/the-bully.ttf';
-import fonts from './assets/fonts/fonts.scss';
+import theBullyFont from '../../assets/fonts/the-bully.ttf';
+import fonts from '../../assets/fonts/fonts.scss';
 /* eslint-enable */
 
 // TODO drop the hot loading process on production build

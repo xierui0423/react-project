@@ -6,7 +6,7 @@
   "scripts": {
     "eslint": "eslint --ext .jsx,.js --fix src",
     "dev-HMR-server": "webpack-dev-server --env=local --open",
-    "build-dev": "webpack --env=dev --progress --profile --colors",
+    "build-dev": "webpack --env=dev",
     "build-prod": "webpack --env=prod",
     "test": "jest --config jest.config.json -i",
     "test-update-snapshot": "jest --config jest.config.json --updateSnapshot -i",
@@ -42,6 +42,9 @@
     "postcss-cssnext": "^2.11.0",
     "postcss-loader": "^2.0.5",
     "postcss-modules": "^0.8.0",
+    "pug": "^2.0.0-rc.2",
+    "pug-loader": "^2.3.0",
+    "raw-loader": "^0.5.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.5",
