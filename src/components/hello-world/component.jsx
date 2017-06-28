@@ -20,6 +20,7 @@ class HelloWorld extends React.Component {
       <div className={style['hello-world']}>Hello World!!!!!
         (from the full lifecycle component)
         <img src={logo} alt="logo" className={style['logo-img']} />
+        <span className="icon-icon_B039" />
       </div>);
   }
 }

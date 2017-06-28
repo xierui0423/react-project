@@ -4,7 +4,8 @@ import jQuery from 'jquery';
 
 /* eslint-disable */
 import theBullyFont from '../../assets/fonts/the-bully.ttf';
-import fonts from '../../assets/fonts/fonts.scss';
+import fonts from '../../assets/fonts/fonts.css';
+import icons from '../../assets/iconmoon/style.css';
 /* eslint-enable */
 
 // TODO drop the hot loading process on production build

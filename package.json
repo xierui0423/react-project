@@ -11,6 +11,7 @@
     "test": "jest --config jest.config.json -i",
     "test-update-snapshot": "jest --config jest.config.json --updateSnapshot -i",
     "build-dev": "webpack --env=dev",
+    "build-dev-fast": "webpack --env=dev",
     "build-prod": "webpack --env=prod",
     "prebuild-dev": "npm run test",
     "prebuild-prod": "npm run test"
@@ -50,6 +51,7 @@
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-test-renderer": "^15.5.4",
+    "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.5",
     "stylefmt": "^6.0.0",
     "stylelint": "^7.11.0",
