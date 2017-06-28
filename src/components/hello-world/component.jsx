@@ -4,7 +4,6 @@ import logo from './assets/react-logo.png';
 
 class HelloWorld extends React.Component {
   componentWillMount() {
-    // TODO Auto-drop console use on production build
     console.log('component will mount!');
   }
 

@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CssNextPlugin = require('postcss-cssnext');
 const fileStream = require('fs');
 
-module.exports = function (env, compileEntries) {
+module.exports = (env, compileEntries) => {
   const config = {
     entry: { vendor: ['jquery', 'react', 'react-dom', 'prop-types'] },
 
@@ -101,7 +101,7 @@ module.exports = function (env, compileEntries) {
         // (the commons chunk name)
         names: ['commons', 'vendor'],
 
-        // (Modules must be shared between 3 entries)
+        // (Modules must be shared between 2 entries)
         minChunks: 2,
       }),
     ],
