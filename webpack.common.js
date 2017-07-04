@@ -8,13 +8,13 @@ const path = require('path');
 
 module.exports = (env, compileEntries) => {
   const config = {
-    entry: { vendor: ['jquery', 'react', 'react-dom', 'prop-types'] },
+    entry: env === 'local' ? {} : { vendor: ['jquery', 'react', 'react-dom', 'prop-types'] },
 
     output: {
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
       chunkFilename: 'async-chunks/[name].js',
-      filename: 'entries/[name].js',
+      filename: `entries/[name]${env === 'local' ? '' : '.[chunkhash]'}.js`,
     },
 
     devtool: 'inline-source-map',
@@ -49,7 +49,10 @@ module.exports = (env, compileEntries) => {
               },
             },
             'resolve-url-loader',
-            { loader: 'postcss-loader', options: { plugins: () => [CssNextPlugin], sourceMap: true } },
+            {
+              loader: 'postcss-loader',
+              options: { plugins: () => [CssNextPlugin], sourceMap: true },
+            },
             { loader: 'sass-loader', options: { sourceMap: true } },
           ])),
         },
@@ -112,7 +115,7 @@ module.exports = (env, compileEntries) => {
 
       new webpack.optimize.CommonsChunkPlugin({
         // (the commons chunk name)
-        names: ['commons', 'vendor'],
+        names: env === 'local' ? ['commons'] : ['commons', 'vendor', 'manifest'],
 
         // (Modules must be shared between 2 entries)
         minChunks: 2,
@@ -153,7 +156,7 @@ module.exports = (env, compileEntries) => {
 
 
     config.plugins.push(new HtmlWebpackPlugin({
-      chunks: ['vendor', 'commons', entry],
+      chunks: env === 'local' ? ['commons', entry] : ['manifest', 'vendor', 'commons', entry],
       filename: `pages/${entry}.html`, // Main html output path
       template: `./src/entries/${entry}/template.pug`, // Html template path
     }));
