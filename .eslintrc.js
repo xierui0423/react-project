@@ -32,6 +32,12 @@ module.exports = {
     'react/forbid-prop-types': 0,
 
     // allow dev module import in config files
-    'import/no-extraneous-dependencies': 0
+    'import/no-extraneous-dependencies': 0,
+
+    // allow unary operators since we are not using auto semicolon insertion process
+    'no-plusplus': 0,
+
+    // no need to do prop type check for everything
+    'react/prop-types': 0,
   }
 }

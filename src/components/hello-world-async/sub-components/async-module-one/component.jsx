@@ -6,8 +6,8 @@ import style from './style.scss';
 
 // eslint-disable-next-line
 class AsyncComponent extends React.Component {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
     this.state = { clicked: false };
   }
 

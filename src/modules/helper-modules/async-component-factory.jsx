@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 
 class AsyncLoad extends React.Component {
 
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
     this.state = {
       isLoaded: false,
     };
@@ -76,7 +76,12 @@ const AsyncFactory = (Component, modules) => {
   // eslint-disable-next-line
   class AsyncWrapper extends React.Component {
     render() {
-      return (<AsyncLoad ref={(component) => { this.AsyncLoad = component; }} modules={modules}>
+      return (<AsyncLoad
+        ref={(component) => {
+          this.AsyncLoad = component;
+        }}
+        modules={modules}
+      >
         {mods => <Component {...mods} {...this.props} />}
       </AsyncLoad>);
     }

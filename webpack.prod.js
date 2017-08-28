@@ -8,7 +8,7 @@ process.env.NODE_ENV = 'production';
 
 module.exports = function (env, compileEntries) {
   return Merge(CommonConfig(env, compileEntries), {
-    devtool: 'cheap-module-source-map',
+    devtool: false,
 
     plugins: [
       new StyleLintPlugin({
